@@ -1,4 +1,4 @@
-def func():
-    print("Hello World")
+def func(name: str):
+    print("Hello: "+str)
 
-func()
+func("ABCDE")
