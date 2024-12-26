@@ -1,5 +1,33 @@
 name: Manually triggered
-on: workflow_dispatch
+on:
+    workflow_dispatch:
+        inputs:
+            string:
+                description: A string input
+                type: string 
+                required: true
+                default: Default value
+            number:
+                description: A number input
+                default: 4
+                type: number
+            option:
+                description: "An Options Input"
+                required: true
+                default: "Option 3"
+                type: choice
+                options:
+                - Option 1
+                - Option 2
+                - Option 3
+            boolean:
+                description: A boolean option
+                required: false
+                type: boolean
+            environment:
+                description: "Environment"
+                type: environment
+                required: true
 
 jobs:
     log-info:
@@ -7,3 +35,9 @@ jobs:
         steps:
             - name: Echo line
               run: echo $GITHUB_REF
+            - name: Echo input
+              run: |
+                echo "String: ${{ inputs.string }}"
+                echo "Number: ${{ inputs.number }}"
+                echo "Option: ${{ inputs.option }}"
+                echo "Environment: ${{ inputs.environment }}"
