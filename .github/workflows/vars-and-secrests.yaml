@@ -2,6 +2,18 @@ name: Variables and Secrets
 on: [push]
 
 jobs:
+  decrypt-file:
+    runs-on: ${{ vars.HOST_MACHINE }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Decrypt file
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+        run: |
+          mkdir $HOME/secrets
+          gpg --quiet --batch --yes --decrypt --pashphrase="$PASSPHRASE" --output $HOME/secrets/secrets.json secrets.json.gpg
+      - name: View encrypted file content
+        run: cat $HOME/secrets/secrets.json
   log-vars:
     runs-on: ${{ vars.HOST_MACHINE }}
     environment: prod
