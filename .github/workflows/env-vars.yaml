@@ -39,4 +39,3 @@ jobs:
           echo $JOB_LEVEL_ENV
           echo $NEW_ENV_VAR
           echo $RANDOM_JOKE
-          echo $GITHUB_ENV
