@@ -11,7 +11,7 @@ jobs:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
         run: |
           mkdir $HOME/secrets
-          gpg --quiet --batch --yes --decrypt --pashphrase="$PASSPHRASE" --output $HOME/secrets/secrets.json secrets.json.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secrets/secrets.json secrets.json.gpg
       - name: View encrypted file content
         run: cat $HOME/secrets/secrets.json
   log-vars:
