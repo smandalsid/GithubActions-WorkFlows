@@ -1,4 +1,5 @@
 name: Concurrency 1
+run-name: Concurrency 1 (${{ inputs.environment }})
 on:
     workflow_dispatch:
         inputs:
@@ -7,8 +8,8 @@ on:
                 type: environment
                 required: true
 concurrency:
-    group: ${{ github.event.inputs.environment }}
-    cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.event.inputs.environment }} # add dynamic concurrency groups
+    cancel-in-progress: true # it will cancel run in progress as well, (default is it cancels the recent ones, leaves the oldest one, waits for it to finish, then runs the latest one.)
 jobs:
     sleep:
         runs-on: ubuntu-latest
