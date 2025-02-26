@@ -1,4 +1,4 @@
-name: Reusable Yaml
+name: Reusable Workflow 1
 on:
     workflow_call:
         inputs:
