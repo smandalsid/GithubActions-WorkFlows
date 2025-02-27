@@ -10,6 +10,8 @@ on:
 
 jobs:
     calling-a-reusable-wf-in-the-same-repo:
+        permissions:
+            issues: read
         uses: ./.github/workflows/reusable-workflow-2.yaml
         secrets: inherit # this will pass all secrets from caller workflow to nested workflow
     using-reusable-wf-output:
