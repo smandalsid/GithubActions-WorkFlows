@@ -7,6 +7,13 @@ on:
                 value: ${{ jobs.generate-output.outputs.date }}
 
 jobs:
+    nested-workflow:
+        uses: smandalsid/GithubActions-WorkFlows/.github/workflows/reusable.yaml@main
+        with:
+            name: 'HelloHello'
+        secrets:
+            access-token: ${{ secrets.ACCESS_TOKEN }}
+
     generate-output:
         runs-on: ubuntu-latest
         outputs:
