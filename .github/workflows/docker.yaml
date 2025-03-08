@@ -40,5 +40,4 @@ jobs:
             - name: Show file contents
               uses: docker://node:18.16-alpine3.17
               with:
-                entrypoint: cat
-                args: file.txt
+                cmd: cat file.txt
