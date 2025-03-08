@@ -26,3 +26,12 @@ jobs:
                 cat /etc/os-release
             - name: log env
               run: echo $API_URL
+            - name: Log node version
+              uses: docker://node:18.16-alphine3.17
+              with:
+                entrypoint: /usr/local/bin/node
+                args: -p 2
+            - name: Log node version
+              uses: docker://node:18.16-alphine3.17
+              with:
+                args: -v
